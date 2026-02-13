@@ -1,0 +1,30 @@
+{
+    "current": {
+        "color_primary": "#FF4C24",
+        "color_secondary": "#49557E",
+        "color_text": "#333333",
+        "color_background": "#ffffff",
+        "color_footer_bg": "#323232",
+        "color_footer_text": "#D9D9D9",
+        "logo_width": 150,
+        "currency_symbol": "₹",
+        "delivery_charge": "40",
+        "social_facebook": "https://www.facebook.com/hotelchola",
+        "social_twitter": "https://www.twitter.com/hotelchola",
+        "social_instagram": "https://www.instagram.com/hotelchola",
+        "social_linkedin": "https://www.linkedin.com/company/hotelchola",
+        "sections": {
+            "header": {
+                "type": "header",
+                "settings": {}
+            },
+            "footer": {
+                "type": "footer",
+                "settings": {
+                    "footer_description": "Hotel Chola is your go-to destination for authentic, delicious food experiences delivered straight to your doorstep. We offer a wide variety of mouthwatering meals crafted with the finest ingredients."
+                }
+            }
+        },
+        "content_for_index": []
+    }
+}

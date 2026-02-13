@@ -1,0 +1,65 @@
+{%- comment -%}
+  PRODUCT CARD SNIPPET
+  Reusable product card with image, title, description, price, and Ajax Add to Cart
+  Usage: {% render 'product-card', product: product %}
+{%- endcomment -%}
+
+<div class="food-item" id="food-item-{{ product.id }}">
+  <a href="{{ product.url }}" class="food-item-link" style="text-decoration: none; color: inherit;">
+    <div class="food-item-img-container">
+      {%- if product.featured_image != blank -%}
+        <img
+          class="food-item-image"
+          src="{{ product.featured_image | image_url: width: 480 }}"
+          alt="{{ product.featured_image.alt | default: product.title | escape }}"
+          loading="lazy"
+          width="480"
+          height="360"
+        >
+      {%- else -%}
+        <div class="food-item-image" style="background: #f0f0f0; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; border-radius: 15px 15px 0 0;">
+          <i class="fa-solid fa-utensils" style="font-size: 48px; color: #ccc;"></i>
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Add to Cart Button {%- endcomment -%}
+      {%- if product.available -%}
+        <button
+          class="add-to-cart-btn"
+          data-add-to-cart
+          data-variant-id="{{ product.first_available_variant.id }}"
+          aria-label="Add {{ product.title | escape }} to cart"
+        >+</button>
+      {%- else -%}
+        <span class="add-to-cart-btn" style="background: #999; cursor: not-allowed;" aria-label="Sold out">✕</span>
+      {%- endif -%}
+    </div>
+
+    <div class="food-item-info">
+      <div class="food-item-name-rating">
+        <p>{{ product.title }}</p>
+        {%- if product.metafields.reviews.rating.value != blank -%}
+          <div class="food-item-rating">
+            {%- assign rating = product.metafields.reviews.rating.value -%}
+            <span style="color: #FF4C24;">★</span>
+            <span style="font-size: 12px; color: #777;">{{ rating }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <p class="food-item-desc">
+        {{ product.description | strip_html | truncate: 80 }}
+      </p>
+
+      <p class="food-item-price">
+        {{ product.price | money }}
+      </p>
+
+      {%- if product.compare_at_price > product.price -%}
+        <p style="text-decoration: line-through; color: #999; font-size: 14px; margin-top: -8px;">
+          {{ product.compare_at_price | money }}
+        </p>
+      {%- endif -%}
+    </div>
+  </a>
+</div>

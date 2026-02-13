@@ -1,0 +1,19 @@
+{%- comment -%}
+  FLOATING CART SNIPPET
+  Fixed bottom bar showing cart item count and total, links to /cart
+  Hidden when cart is empty (JS manages visibility)
+{%- endcomment -%}
+
+<div class="floating-cart-container {% if cart.item_count == 0 %}is-hidden{% endif %}">
+  <a href="/cart" class="floating-cart">
+    <div class="floating-cart-left">
+      <p class="floating-cart-items">{{ cart.item_count }} ITEM{{ cart.item_count | plural: '', 'S' }}</p>
+      <span class="divider">|</span>
+      <p class="floating-cart-total">{{ cart.total_price | money }}</p>
+    </div>
+    <div class="floating-cart-right">
+      <p>View Cart</p>
+      <i class="arrow-icon">→</i>
+    </div>
+  </a>
+</div>

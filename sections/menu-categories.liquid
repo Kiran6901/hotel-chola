@@ -1,0 +1,133 @@
+{%- comment -%}
+  MENU CATEGORIES SECTION
+  Horizontal scrollable category circles linking to collections
+{%- endcomment -%}
+
+<div class="explore-menu" id="explore-menu">
+  {%- if section.settings.title != blank -%}
+    <h1>{{ section.settings.title }}</h1>
+  {%- endif -%}
+
+  {%- if section.settings.description != blank -%}
+    <p class="explore-menu-text">{{ section.settings.description }}</p>
+  {%- endif -%}
+
+  <div class="explore-menu-list">
+    {%- for block in section.blocks -%}
+      <div class="explore-menu-list-item" {{ block.shopify_attributes }}>
+        {%- if block.settings.category_link != blank -%}
+          <a href="{{ block.settings.category_link }}">
+        {%- endif -%}
+
+          {%- if block.settings.category_image != blank -%}
+            <img
+              src="{{ block.settings.category_image | image_url: width: 200 }}"
+              alt="{{ block.settings.category_name | escape }}"
+              loading="lazy"
+            >
+          {%- else -%}
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+              <i class="fa-solid fa-utensils" style="font-size: 24px; color: #999;"></i>
+            </div>
+          {%- endif -%}
+          <p>{{ block.settings.category_name }}</p>
+
+        {%- if block.settings.category_link != blank -%}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+
+    {%- comment -%} Fallback: If no blocks, show collections {%- endcomment -%}
+    {%- if section.blocks.size == 0 -%}
+      {%- for collection in collections limit: 8 -%}
+        <div class="explore-menu-list-item">
+          <a href="{{ collection.url }}">
+            {%- if collection.image != blank -%}
+              <img
+                src="{{ collection.image | image_url: width: 200 }}"
+                alt="{{ collection.title | escape }}"
+                loading="lazy"
+                style="border-radius: 50%; width: 80px; height: 80px; object-fit: cover;"
+              >
+            {%- else -%}
+              <div style="width: 80px; height: 80px; border-radius: 50%; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                <i class="fa-solid fa-utensils" style="font-size: 24px; color: #999;"></i>
+              </div>
+            {%- endif -%}
+            <p>{{ collection.title }}</p>
+          </a>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+
+  <hr>
+</div>
+
+{% schema %}
+{
+  "name": "Menu Categories",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Explore our menu"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Check out our menu and find something you'll love! We have a mix of dishes, from your everyday favorites to special treats, all made fresh and tasty."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_name",
+          "label": "Category Name",
+          "default": "Category"
+        },
+        {
+          "type": "image_picker",
+          "id": "category_image",
+          "label": "Category Image",
+          "info": "Round image, recommended 200x200px"
+        },
+        {
+          "type": "url",
+          "id": "category_link",
+          "label": "Category Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Menu Categories",
+      "blocks": [
+        { "type": "category", "settings": { "category_name": "Salad" } },
+        { "type": "category", "settings": { "category_name": "Rolls" } },
+        { "type": "category", "settings": { "category_name": "Deserts" } },
+        { "type": "category", "settings": { "category_name": "Sandwich" } },
+        { "type": "category", "settings": { "category_name": "Cake" } },
+        { "type": "category", "settings": { "category_name": "Pure Veg" } },
+        { "type": "category", "settings": { "category_name": "Pasta" } },
+        { "type": "category", "settings": { "category_name": "Noodles" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

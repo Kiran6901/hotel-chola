@@ -1,0 +1,149 @@
+{%- comment -%}
+  HEADER SECTION — Sticky Navbar
+  Includes: Logo, Navigation, Search, Cart Icon, Mobile Menu
+{%- endcomment -%}
+
+<div class="navbar">
+  <div class="navbar-container">
+    {%- comment -%} Logo {%- endcomment -%}
+    <a href="/">
+      {%- if settings.logo != blank -%}
+        <img
+          class="logo"
+          src="{{ settings.logo | image_url: width: 300 }}"
+          alt="{{ shop.name }}"
+          width="{{ settings.logo_width | default: 150 }}"
+          loading="eager"
+        >
+      {%- else -%}
+        <span class="logo" style="font-size: 24px; font-weight: 700; color: #2b2b2b;">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    {%- comment -%} Desktop Navigation {%- endcomment -%}
+    <ul class="navbar-menu desktop-menu">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <a
+          href="{{ link.url }}"
+          class="{% if link.active %} active{% endif %}"
+        >
+          {{ link.title }}
+        </a>
+      {%- endfor -%}
+    </ul>
+
+    {%- comment -%} Navbar Right — Search, Cart, Hamburger {%- endcomment -%}
+    <div class="navbar-right">
+      {%- comment -%} Search Icon {%- endcomment -%}
+      <div class="search-container">
+        <svg id="search-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#49557E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor: pointer;">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <div class="search-input-container" style="display: none;">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search food items..."
+            autocomplete="off"
+          >
+          <div class="search-results"></div>
+        </div>
+      </div>
+
+      {%- comment -%} Cart Icon {%- endcomment -%}
+      <a href="/cart" class="navbar-search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#49557E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        {%- if cart.item_count > 0 -%}
+          <span class="cart-count-badge">{{ cart.item_count }}</span>
+        {%- endif -%}
+        <div class="dot" {% unless cart.item_count > 0 %}style="display: none;"{% endunless %}></div>
+      </a>
+
+      {%- comment -%} Hamburger Menu {%- endcomment -%}
+      <div class="hamburger-menu">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+      </div>
+
+      {%- comment -%} Desktop Account / Sign In {%- endcomment -%}
+      <div class="desktop-signin">
+        {%- if customer -%}
+          <div class="navbar-profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#49557E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor: pointer;">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <ul class="navbar-profile-dropdown">
+              <li><a href="/account">Profile</a></li>
+              <li><a href="/account#orders">Orders</a></li>
+              <hr>
+              <li><a href="/account/logout">Logout</a></li>
+            </ul>
+          </div>
+        {%- else -%}
+          <a href="/account/login">
+            <button>Sign In</button>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- comment -%} Mobile Menu Dropdown {%- endcomment -%}
+    <ul class="navbar-menu mobile-menu">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <a
+          href="{{ link.url }}"
+          class="{% if link.active %} active{% endif %}"
+        >
+          {{ link.title }}
+        </a>
+      {%- endfor -%}
+
+      {%- if customer -%}
+        <a href="/account">
+          <i class="fa-solid fa-user" style="margin-right: 8px;"></i> Profile
+        </a>
+        <a href="/account#orders">
+          <i class="fa-solid fa-bag-shopping" style="margin-right: 8px;"></i> Orders
+        </a>
+        <a href="/account/logout">
+          <i class="fa-solid fa-right-from-bracket" style="margin-right: 8px;"></i> Logout
+        </a>
+      {%- else -%}
+        <a href="/account/login" class="mobile-signin">Sign In</a>
+      {%- endif -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#49557E"
+    }
+  ]
+}
+{% endschema %}

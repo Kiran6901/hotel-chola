@@ -1,0 +1,147 @@
+{%- comment -%}
+  PRODUCT TEMPLATE
+  Detailed product page with image, title, price, description, and Ajax Add to Cart form
+  Replaces the FoodDetail page from the original React app
+{%- endcomment -%}
+
+<div class="product-detail">
+  {%- comment -%} Product Image {%- endcomment -%}
+  <div class="product-detail-image">
+    {%- if product.featured_image != blank -%}
+      <img
+        src="{{ product.featured_image | image_url: width: 800 }}"
+        alt="{{ product.featured_image.alt | default: product.title | escape }}"
+        loading="eager"
+      >
+    {%- else -%}
+      <div style="background: #f0f0f0; width: 100%; aspect-ratio: 1; border-radius: 15px; display: flex; align-items: center; justify-content: center;">
+        <i class="fa-solid fa-utensils" style="font-size: 80px; color: #ccc;"></i>
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} Additional Images Gallery {%- endcomment -%}
+    {%- if product.images.size > 1 -%}
+      <div style="display: flex; gap: 10px; margin-top: 15px; overflow-x: auto;">
+        {%- for image in product.images -%}
+          <img
+            src="{{ image | image_url: width: 150 }}"
+            alt="{{ image.alt | default: product.title | escape }}"
+            style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid {% if forloop.first %}#FF4C24{% else %}transparent{% endif %};"
+            loading="lazy"
+            onclick="document.querySelector('.product-detail-image > img').src='{{ image | image_url: width: 800 }}';"
+          >
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} Product Info {%- endcomment -%}
+  <div class="product-detail-info">
+    <h1>{{ product.title }}</h1>
+
+    {%- comment -%} Rating (if available via metafields) {%- endcomment -%}
+    {%- if product.metafields.reviews.rating.value != blank -%}
+      <div class="food-item-rating" style="font-size: 16px;">
+        <span style="color: #FF4C24;">★</span>
+        <span>{{ product.metafields.reviews.rating.value }}</span>
+        {%- if product.metafields.reviews.rating_count.value != blank -%}
+          <span style="color: #777; font-size: 14px;">({{ product.metafields.reviews.rating_count.value }} reviews)</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <p class="product-price">{{ product.price | money }}</p>
+
+    {%- if product.compare_at_price > product.price -%}
+      <p style="text-decoration: line-through; color: #999; font-size: 16px; margin-top: -10px;">
+        {{ product.compare_at_price | money }}
+      </p>
+      <span style="background: #28a745; color: white; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">
+        Save {{ product.compare_at_price | minus: product.price | money }}
+      </span>
+    {%- endif -%}
+
+    <div class="product-description" style="margin-top: 15px;">
+      {{ product.description }}
+    </div>
+
+    {%- comment -%} Product Type / Vendor {%- endcomment -%}
+    {%- if product.type != blank -%}
+      <p style="color: #999; font-size: 14px; margin-top: 10px;">
+        Category: <a href="/collections/{{ product.type | handle }}" style="color: #FF4C24;">{{ product.type }}</a>
+      </p>
+    {%- endif -%}
+
+    {%- comment -%} Add to Cart Form {%- endcomment -%}
+    <div class="product-detail-form" style="margin-top: 20px;">
+      {%- if product.available -%}
+        <form data-ajax-cart action="/cart/add" method="post">
+          <input type="hidden" name="id" value="{{ product.first_available_variant.id }}">
+
+          {%- comment -%} Variant selector (if multiple variants) {%- endcomment -%}
+          {%- if product.variants.size > 1 -%}
+            <div style="margin-bottom: 15px;">
+              <label for="variant-select" style="font-weight: 600; margin-bottom: 8px; display: block;">
+                Choose Option:
+              </label>
+              <select
+                id="variant-select"
+                name="id"
+                style="padding: 10px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; width: 100%; max-width: 300px;"
+              >
+                {%- for variant in product.variants -%}
+                  <option
+                    value="{{ variant.id }}"
+                    {% unless variant.available %}disabled{% endunless %}
+                  >
+                    {{ variant.title }} — {{ variant.price | money }}
+                    {%- unless variant.available %} (Sold Out){% endunless -%}
+                  </option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- endif -%}
+
+          {%- comment -%} Quantity {%- endcomment -%}
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+            <label for="quantity" style="font-weight: 600;">Qty:</label>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              value="1"
+              min="1"
+              max="10"
+              style="width: 60px; padding: 8px; border: 1px solid #ddd; border-radius: 8px; text-align: center; font-size: 14px;"
+            >
+          </div>
+
+          <button type="submit" class="add-to-cart-large">
+            Add to Cart
+          </button>
+        </form>
+      {%- else -%}
+        <button class="add-to-cart-large" style="background-color: #999; cursor: not-allowed;" disabled>
+          Sold Out
+        </button>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{%- comment -%} Related Products {%- endcomment -%}
+{%- if product.collections.first != blank -%}
+  {%- assign related_collection = product.collections.first -%}
+  {%- if related_collection.products.size > 1 -%}
+    <div class="food-display" style="margin-top: 60px; margin-bottom: 60px;">
+      <h2>You may also like</h2>
+      <div class="food-display-list">
+        {%- for related_product in related_collection.products limit: 4 -%}
+          {%- unless related_product.id == product.id -%}
+            {% render 'product-card', product: related_product %}
+          {%- endunless -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}

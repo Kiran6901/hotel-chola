@@ -1,0 +1,133 @@
+[
+    {
+        "name": "theme_info",
+        "theme_name": "Hotel Chola Theme",
+        "theme_version": "1.0.0",
+        "theme_author": "Hotel Chola",
+        "theme_documentation_url": "",
+        "theme_support_url": ""
+    },
+    {
+        "name": "Colors",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Primary Colors"
+            },
+            {
+                "type": "color",
+                "id": "color_primary",
+                "label": "Primary Color",
+                "default": "#FF4C24",
+                "info": "Used for buttons, accents, and highlights"
+            },
+            {
+                "type": "color",
+                "id": "color_secondary",
+                "label": "Secondary Color",
+                "default": "#49557E",
+                "info": "Used for navigation text and secondary elements"
+            },
+            {
+                "type": "color",
+                "id": "color_text",
+                "label": "Text Color",
+                "default": "#333333"
+            },
+            {
+                "type": "color",
+                "id": "color_background",
+                "label": "Background Color",
+                "default": "#ffffff"
+            },
+            {
+                "type": "header",
+                "content": "Footer Colors"
+            },
+            {
+                "type": "color",
+                "id": "color_footer_bg",
+                "label": "Footer Background",
+                "default": "#323232"
+            },
+            {
+                "type": "color",
+                "id": "color_footer_text",
+                "label": "Footer Text Color",
+                "default": "#D9D9D9"
+            }
+        ]
+    },
+    {
+        "name": "Logo & Favicon",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "logo",
+                "label": "Store Logo"
+            },
+            {
+                "type": "range",
+                "id": "logo_width",
+                "label": "Logo Width (px)",
+                "min": 50,
+                "max": 300,
+                "step": 10,
+                "default": 150,
+                "unit": "px"
+            },
+            {
+                "type": "image_picker",
+                "id": "favicon",
+                "label": "Favicon"
+            }
+        ]
+    },
+    {
+        "name": "Social Media",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Social Media Links"
+            },
+            {
+                "type": "url",
+                "id": "social_facebook",
+                "label": "Facebook URL"
+            },
+            {
+                "type": "url",
+                "id": "social_twitter",
+                "label": "Twitter / X URL"
+            },
+            {
+                "type": "url",
+                "id": "social_instagram",
+                "label": "Instagram URL"
+            },
+            {
+                "type": "url",
+                "id": "social_linkedin",
+                "label": "LinkedIn URL"
+            }
+        ]
+    },
+    {
+        "name": "Currency & Delivery",
+        "settings": [
+            {
+                "type": "text",
+                "id": "currency_symbol",
+                "label": "Currency Symbol",
+                "default": "₹"
+            },
+            {
+                "type": "text",
+                "id": "delivery_charge",
+                "label": "Delivery Charge",
+                "default": "40",
+                "info": "Delivery charge amount (without currency symbol)"
+            }
+        ]
+    }
+]

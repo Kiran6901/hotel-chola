@@ -1,0 +1,57 @@
+{
+    "general": {
+        "accessibility": {
+            "skip_to_content": "Skip to content"
+        }
+    },
+    "sections": {
+        "header": {
+            "name": "Header",
+            "menu": "Menu",
+            "cart": "Cart",
+            "search": "Search",
+            "sign_in": "Sign in",
+            "account": "Account"
+        },
+        "hero_banner": {
+            "name": "Hero Banner"
+        },
+        "menu_categories": {
+            "name": "Menu Categories"
+        },
+        "featured_products": {
+            "name": "Featured Products",
+            "view_all": "View All",
+            "add_to_cart": "Add to Cart",
+            "loading": "Loading delicious dishes..."
+        },
+        "image_carousel": {
+            "name": "Image Carousel"
+        },
+        "footer": {
+            "name": "Footer",
+            "company": "COMPANY",
+            "get_in_touch": "GET IN TOUCH",
+            "copyright": "All Right Reserved."
+        }
+    },
+    "templates": {
+        "cart": {
+            "title": "Your Cart",
+            "items": "Items",
+            "item_title": "Title",
+            "price": "Price",
+            "quantity": "Quantity",
+            "total": "Total",
+            "remove": "Remove",
+            "subtotal": "Subtotal",
+            "delivery_fee": "Delivery Fee",
+            "checkout": "PROCEED TO CHECKOUT",
+            "empty": "Your cart is empty",
+            "continue_shopping": "Continue Shopping",
+            "promo_placeholder": "promo code",
+            "promo_prompt": "If you have a promo code, Enter it here",
+            "promo_submit": "Submit"
+        }
+    }
+}

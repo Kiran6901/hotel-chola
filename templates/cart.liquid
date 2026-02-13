@@ -1,0 +1,125 @@
+{%- comment -%}
+  CART TEMPLATE
+  Full cart page with line items, quantity controls, promo code, and checkout
+  Replaces the Cart page from the original React app
+{%- endcomment -%}
+
+<div class="cart">
+  <h1 style="font-size: 28px; font-weight: 600; margin-bottom: 30px;">{{ 'templates.cart.title' | t }}</h1>
+
+  {%- if cart.item_count > 0 -%}
+    <div class="cart-items">
+      {%- comment -%} Table Header {%- endcomment -%}
+      <div class="cart-items-title">
+        <p>{{ 'templates.cart.items' | t }}</p>
+        <p>{{ 'templates.cart.item_title' | t }}</p>
+        <p>{{ 'templates.cart.price' | t }}</p>
+        <p>{{ 'templates.cart.quantity' | t }}</p>
+        <p>{{ 'templates.cart.total' | t }}</p>
+        <p>{{ 'templates.cart.remove' | t }}</p>
+      </div>
+      <br>
+      <hr>
+
+      {%- comment -%} Cart Line Items {%- endcomment -%}
+      {%- for item in cart.items -%}
+        <div class="cart-items-title cart-items-item">
+          <a href="{{ item.url }}">
+            <img
+              src="{{ item.image | image_url: width: 100 }}"
+              alt="{{ item.title | escape }}"
+              style="border-radius: 4px;"
+            >
+          </a>
+          <p>
+            <a href="{{ item.url }}" style="color: inherit; text-decoration: none;">
+              {{ item.product.title }}
+            </a>
+            {%- unless item.variant.title == 'Default Title' -%}
+              <br><small style="color: #999;">{{ item.variant.title }}</small>
+            {%- endunless -%}
+          </p>
+          <p>{{ item.price | money }}</p>
+          <div class="cart-qty-controls">
+            <button
+              class="cart-qty-btn"
+              data-cart-qty="minus"
+              data-line-key="{{ item.key }}"
+              data-current-qty="{{ item.quantity }}"
+              aria-label="Decrease quantity"
+            >−</button>
+            <span class="cart-qty-value">{{ item.quantity }}</span>
+            <button
+              class="cart-qty-btn"
+              data-cart-qty="plus"
+              data-line-key="{{ item.key }}"
+              data-current-qty="{{ item.quantity }}"
+              aria-label="Increase quantity"
+            >+</button>
+          </div>
+          <p>{{ item.line_price | money }}</p>
+          <p
+            class="cart-items-remove-icon"
+            data-cart-remove
+            data-line-key="{{ item.key }}"
+            style="color: #FF4C24; font-weight: bold;"
+          >✕</p>
+        </div>
+        <hr>
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} Cart Bottom: Totals + Promo Code {%- endcomment -%}
+    <div class="cart-bottom">
+      <div class="cart-total">
+        <h2>Cart Totals</h2>
+        <div>
+          <div class="cart-total-details">
+            <p>{{ 'templates.cart.subtotal' | t }}</p>
+            <p>{{ cart.total_price | money }}</p>
+          </div>
+          <hr>
+          <div class="cart-total-details">
+            <p>{{ 'templates.cart.delivery_fee' | t }}</p>
+            <p>Calculated at checkout</p>
+          </div>
+          <hr>
+          <div class="cart-total-details">
+            <b>{{ 'templates.cart.total' | t }}</b>
+            <b>{{ cart.total_price | money }}</b>
+          </div>
+        </div>
+
+        <form action="/checkout" method="post">
+          <button type="submit" name="checkout" class="cart-checkout-btn">
+            {{ 'templates.cart.checkout' | t }}
+          </button>
+        </form>
+      </div>
+
+      <div class="cart-promocode">
+        <div>
+          <p>{{ 'templates.cart.promo_prompt' | t }}</p>
+          <div class="cart-promocode-input">
+            <input type="text" placeholder="{{ 'templates.cart.promo_placeholder' | t }}">
+            <button type="button">{{ 'templates.cart.promo_submit' | t }}</button>
+          </div>
+          <p style="font-size: 12px; color: #999; margin-top: 8px;">
+            Note: Discount codes will be applied at checkout.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  {%- else -%}
+    {%- comment -%} Empty Cart State {%- endcomment -%}
+    <div style="text-align: center; padding: 80px 20px;">
+      <i class="fa-solid fa-cart-shopping" style="font-size: 72px; color: #ddd; margin-bottom: 20px;"></i>
+      <h2 style="color: #555; margin-bottom: 10px;">{{ 'templates.cart.empty' | t }}</h2>
+      <p style="color: #999; margin-bottom: 30px;">Looks like you haven't added any items to your cart yet.</p>
+      <a href="/collections/all" class="view-all-button">
+        {{ 'templates.cart.continue_shopping' | t }}
+      </a>
+    </div>
+  {%- endif -%}
+</div>

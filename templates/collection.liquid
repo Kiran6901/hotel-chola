@@ -1,0 +1,71 @@
+{%- comment -%}
+  COLLECTION TEMPLATE
+  Displays all products in a collection with filter/sort capabilities
+  Equivalent to the "All Foods" page in the original React app
+{%- endcomment -%}
+
+<div class="collection-header">
+  <h1>{{ collection.title }}</h1>
+  {%- if collection.description != blank -%}
+    <p>{{ collection.description }}</p>
+  {%- endif -%}
+</div>
+
+{%- comment -%} Category filters from collection tags {%- endcomment -%}
+{%- if collection.all_tags.size > 0 -%}
+  <div class="explore-menu-list" style="margin-bottom: 30px;">
+    <div class="explore-menu-list-item">
+      <a href="{{ collection.url }}" style="text-decoration: none;">
+        <div style="width: 60px; height: 60px; border-radius: 50%; background: {% if current_tags == blank %}#FF4C24{% else %}#f0f0f0{% endif %}; display: flex; align-items: center; justify-content: center;">
+          <span style="color: {% if current_tags == blank %}white{% else %}#666{% endif %}; font-size: 12px; font-weight: 600;">All</span>
+        </div>
+        <p>All</p>
+      </a>
+    </div>
+    {%- for tag in collection.all_tags -%}
+      <div class="explore-menu-list-item">
+        {%- if current_tags contains tag -%}
+          <a href="{{ collection.url }}" style="text-decoration: none;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; background: #FF4C24; display: flex; align-items: center; justify-content: center;">
+              <span style="color: white; font-size: 11px; font-weight: 600;">{{ tag | truncate: 8, '' }}</span>
+            </div>
+            <p>{{ tag }}</p>
+          </a>
+        {%- else -%}
+          <a href="{{ collection.url }}/{{ tag | handle }}" style="text-decoration: none;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+              <span style="color: #666; font-size: 11px; font-weight: 600;">{{ tag | truncate: 8, '' }}</span>
+            </div>
+            <p>{{ tag }}</p>
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+  <hr style="margin: 10px 0; height: 2px; background-color: #E2E2E2; border: none;">
+{%- endif -%}
+
+{%- comment -%} Product Grid {%- endcomment -%}
+{%- if collection.products.size > 0 -%}
+  <div class="collection-grid">
+    {%- for product in collection.products -%}
+      {% render 'product-card', product: product %}
+    {%- endfor -%}
+  </div>
+
+  {%- comment -%} Pagination {%- endcomment -%}
+  {%- if paginate.pages > 1 -%}
+    {% paginate collection.products by 12 %}
+      <div style="text-align: center; margin: 40px 0;">
+        {{ paginate | default_pagination }}
+      </div>
+    {% endpaginate %}
+  {%- endif -%}
+{%- else -%}
+  <div class="no-items-message">
+    <p>No products found in this collection.</p>
+    <a href="/collections/all" class="view-all-button" style="display: inline-block; margin-top: 20px;">
+      Browse All Products
+    </a>
+  </div>
+{%- endif -%}

@@ -1,0 +1,69 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+  <title>
+    {{ page_title }}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {%- endif -%}
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Theme Stylesheet -->
+  {{ 'style.css' | asset_url | stylesheet_tag }}
+
+  {{ content_for_header }}
+
+  <style>
+    :root {
+      --color-primary: {{ settings.color_primary | default: '#FF4C24' }};
+      --color-secondary: {{ settings.color_secondary | default: '#49557E' }};
+      --color-text: {{ settings.color_text | default: '#333333' }};
+      --color-background: {{ settings.color_background | default: '#ffffff' }};
+      --color-footer-bg: {{ settings.color_footer_bg | default: '#323232' }};
+      --color-footer-text: {{ settings.color_footer_text | default: '#D9D9D9' }};
+    }
+  </style>
+</head>
+
+<body class="template-{{ template.name | handle }}{% if template.suffix %} template-{{ template.name }}-{{ template.suffix | handle }}{% endif %}">
+
+  <a class="visually-hidden" href="#MainContent">
+    {{ 'general.accessibility.skip_to_content' | t }}
+  </a>
+
+  {% section 'header' %}
+
+  <main id="MainContent" class="content-wrapper" role="main">
+    <div class="page-width">
+      {{ content_for_layout }}
+    </div>
+  </main>
+
+  {% section 'footer' %}
+
+  {% render 'floating-cart' %}
+
+  <!-- Theme JavaScript -->
+  {{ 'theme.js' | asset_url | script_tag }}
+
+</body>
+</html>
