@@ -742,6 +742,44 @@ img {
 }
 
 /* ============================================
+   CATEGORY FILTER CIRCLES (Collection Page)
+   ============================================ */
+.category-filter-circle {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.category-filter-circle i {
+    font-size: 20px;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.category-filter-circle.active {
+    background: #FF4C24;
+}
+
+.category-filter-circle.active i {
+    color: white;
+}
+
+.category-filter-circle:hover {
+    background: #FF4C24;
+    transform: scale(1.05);
+}
+
+.category-filter-circle:hover i {
+    color: white;
+}
+
+/* ============================================
    SEARCH PAGE
    ============================================ */
 .search-page {

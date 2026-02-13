@@ -11,39 +11,33 @@
   {%- endif -%}
 </div>
 
-{%- comment -%} Category filters from collection tags {%- endcomment -%}
-{%- if collection.all_tags.size > 0 -%}
-  <div class="explore-menu-list" style="margin-bottom: 30px;">
+{%- comment -%} Category type filters — links to each collection {%- endcomment -%}
+{%- assign category_names = "All,Tandoori,Naan & Roti,Rice & Noodles,Biryani,Fresh Juice,Desserts,Snacks & Starters,Veg. Gravies,Non-Veg Gravies,Sea Food" | split: "," -%}
+{%- assign category_handles = "all,tandoori,naan-roti,rice-noodles,biryani,fresh-juice,desserts,snacks-starters,veg-gravies,non-veg-gravies,sea-food" | split: "," -%}
+{%- assign category_icons = "utensils,fire,bread-slice,bowl-rice,plate-wheat,glass-water,ice-cream,cookie-bite,leaf,drumstick-bite,fish" | split: "," -%}
+
+<div class="explore-menu-list" style="margin-bottom: 30px;">
+  {%- for cat in category_names -%}
+    {%- assign cat_handle = category_handles[forloop.index0] -%}
+    {%- assign is_active = false -%}
+    {%- if cat_handle == collection.handle -%}
+      {%- assign is_active = true -%}
+    {%- endif -%}
+    {%- if cat_handle == 'all' and collection.handle == 'all' -%}
+      {%- assign is_active = true -%}
+    {%- endif -%}
+
     <div class="explore-menu-list-item">
-      <a href="{{ collection.url }}" style="text-decoration: none;">
-        <div style="width: 60px; height: 60px; border-radius: 50%; background: {% if current_tags == blank %}#FF4C24{% else %}#f0f0f0{% endif %}; display: flex; align-items: center; justify-content: center;">
-          <span style="color: {% if current_tags == blank %}white{% else %}#666{% endif %}; font-size: 12px; font-weight: 600;">All</span>
+      <a href="/collections/{{ cat_handle }}" style="text-decoration: none; color: inherit;">
+        <div class="category-filter-circle {% if is_active %}active{% endif %}">
+          <i class="fa-solid fa-{{ category_icons[forloop.index0] }}"></i>
         </div>
-        <p>All</p>
+        <p>{{ cat }}</p>
       </a>
     </div>
-    {%- for tag in collection.all_tags -%}
-      <div class="explore-menu-list-item">
-        {%- if current_tags contains tag -%}
-          <a href="{{ collection.url }}" style="text-decoration: none;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #FF4C24; display: flex; align-items: center; justify-content: center;">
-              <span style="color: white; font-size: 11px; font-weight: 600;">{{ tag | truncate: 8, '' }}</span>
-            </div>
-            <p>{{ tag }}</p>
-          </a>
-        {%- else -%}
-          <a href="{{ collection.url }}/{{ tag | handle }}" style="text-decoration: none;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
-              <span style="color: #666; font-size: 11px; font-weight: 600;">{{ tag | truncate: 8, '' }}</span>
-            </div>
-            <p>{{ tag }}</p>
-          </a>
-        {%- endif -%}
-      </div>
-    {%- endfor -%}
-  </div>
-  <hr style="margin: 10px 0; height: 2px; background-color: #E2E2E2; border: none;">
-{%- endif -%}
+  {%- endfor -%}
+</div>
+<hr style="margin: 10px 0; height: 2px; background-color: #E2E2E2; border: none;">
 
 {%- comment -%} Product Grid with Pagination {%- endcomment -%}
 {% paginate collection.products by 12 %}
