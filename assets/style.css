@@ -742,6 +742,76 @@ img {
 }
 
 /* ============================================
+   SEARCH PAGE
+   ============================================ */
+.search-page {
+    margin-top: 20px;
+}
+
+.search-page-form {
+    margin: 20px 0 30px;
+}
+
+.search-page-form form {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+}
+
+.search-page-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #E2E2E2;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-page-input:focus {
+    border-color: #FF4C24;
+}
+
+.search-page-btn {
+    padding: 12px 28px;
+    background-color: #FF4C24;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-page-btn:hover {
+    background-color: #e53c18;
+}
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 30px;
+    row-gap: 50px;
+}
+
+@media (max-width: 576px) {
+    .search-page-form form {
+        flex-direction: column;
+    }
+
+    .search-page-btn {
+        width: 100%;
+    }
+
+    .collection-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+        row-gap: 30px;
+    }
+}
+
+/* ============================================
    FOOD DISPLAY / PRODUCT GRID
    ============================================ */
 .food-display {

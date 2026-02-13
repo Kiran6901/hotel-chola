@@ -1,0 +1,61 @@
+{%- comment -%}
+  SEARCH RESULTS TEMPLATE
+  Displays search results in a product card grid with add-to-cart controls
+  Matches the same Zomato-like layout used on collection pages
+{%- endcomment -%}
+
+<div class="search-page">
+  <div class="collection-header">
+    <h1>Search Results</h1>
+    {%- if search.performed -%}
+      <p>{{ search.results_count }} results for "{{ search.terms }}"</p>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} Search Bar {%- endcomment -%}
+  <div class="search-page-form">
+    <form action="/search" method="get">
+      <input type="hidden" name="type" value="product">
+      <input
+        type="text"
+        name="q"
+        value="{{ search.terms | escape }}"
+        placeholder="Search for dishes..."
+        class="search-page-input"
+        autocomplete="off"
+      >
+      <button type="submit" class="search-page-btn">Search</button>
+    </form>
+  </div>
+
+  {%- if search.performed -%}
+    {% paginate search.results by 12 %}
+      {%- if search.results_count > 0 -%}
+        <div class="food-display-list">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {% render 'product-card', product: item %}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <div style="text-align: center; margin: 40px 0;">
+            {{ paginate | default_pagination }}
+          </div>
+        {%- endif -%}
+      {%- else -%}
+        <div class="no-items-message">
+          <p>No products found for "{{ search.terms }}".</p>
+          <a href="/collections/all" class="view-all-button" style="display: inline-block; margin-top: 20px;">
+            Browse All Products
+          </a>
+        </div>
+      {%- endif -%}
+    {% endpaginate %}
+  {%- else -%}
+    <div class="no-items-message">
+      <p>Type a dish name to search our menu.</p>
+    </div>
+  {%- endif -%}
+</div>
