@@ -1653,3 +1653,365 @@ img {
 .cart-notification.error {
     background: #dc3545;
 }
+
+/* ============================================
+   ZOMATO-STYLE CART PAGE
+   ============================================ */
+.zomato-cart {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px 16px 120px;
+}
+
+/* Header */
+.zc-header {
+    margin-bottom: 16px;
+}
+
+.zc-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1c1c1c;
+    margin: 0;
+}
+
+.zc-header-count {
+    font-size: 14px;
+    font-weight: 400;
+    color: #93959f;
+}
+
+/* Cart Items */
+.zc-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.zc-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid #f0f0f5;
+}
+
+.zc-item:last-child {
+    border-bottom: none;
+}
+
+.zc-item-img-link {
+    flex-shrink: 0;
+}
+
+.zc-item-img {
+    width: 62px;
+    height: 62px;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+}
+
+.zc-item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.zc-item-name {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1c1c1c;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+}
+
+.zc-item-name:hover {
+    color: #e23744;
+}
+
+.zc-item-variant {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: #93959f;
+    margin-top: 2px;
+}
+
+.zc-item-price {
+    font-size: 13px;
+    color: #93959f;
+    margin: 0;
+}
+
+.zc-item-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+/* Quantity Stepper */
+.zc-qty-stepper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d4d5d9;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.zc-qty-stepper button {
+    width: 34px;
+    height: 34px;
+    border: none;
+    background: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #60b246;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+    padding: 0;
+    line-height: 1;
+    font-family: inherit;
+}
+
+.zc-qty-stepper button:hover {
+    background: #f8f8f8;
+}
+
+.zc-qty-stepper button:active {
+    background: #e8f5e1;
+}
+
+.zc-qty-count {
+    width: 32px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #60b246;
+    -webkit-user-select: none;
+    user-select: none;
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    line-height: 34px;
+}
+
+.zc-item-total {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1c1c1c;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Promo / Coupon Section */
+.zc-promo {
+    margin-top: 24px;
+    padding: 16px;
+    background: #f8f8f8;
+    border-radius: 12px;
+    border: 1px dashed #d4d5d9;
+}
+
+.zc-promo-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1c1c1c;
+    margin: 0 0 12px;
+}
+
+.zc-promo-row {
+    display: flex;
+    gap: 10px;
+}
+
+.zc-promo-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #d4d5d9;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    color: #1c1c1c;
+    background: #fff;
+    transition: border-color 0.2s;
+    font-family: inherit;
+}
+
+.zc-promo-input:focus {
+    border-color: #60b246;
+}
+
+.zc-promo-input::placeholder {
+    color: #b3b3b3;
+}
+
+.zc-promo-btn {
+    padding: 10px 24px;
+    background: #60b246;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+    font-family: inherit;
+}
+
+.zc-promo-btn:hover {
+    background: #52a03a;
+}
+
+.zc-promo-note {
+    font-size: 12px;
+    color: #93959f;
+    margin: 10px 0 0;
+}
+
+/* Bill Details */
+.zc-bill {
+    margin-top: 24px;
+}
+
+.zc-bill h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1c1c1c;
+    margin: 0 0 14px;
+}
+
+.zc-bill-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 14px;
+    color: #535665;
+}
+
+.zc-bill-total {
+    border-top: 1px solid #1c1c1c;
+    margin-top: 8px;
+    padding-top: 14px;
+}
+
+.zc-bill-total span {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1c1c1c;
+}
+
+/* Checkout Button */
+.zc-checkout-btn {
+    display: block;
+    width: 100%;
+    margin-top: 24px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(135deg, #e23744, #ff6b6b);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(226, 55, 68, 0.3);
+    transition: transform 0.15s, box-shadow 0.15s;
+    font-family: inherit;
+}
+
+.zc-checkout-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(226, 55, 68, 0.4);
+}
+
+.zc-checkout-btn:active {
+    transform: translateY(0);
+}
+
+/* Empty Cart */
+.zc-empty {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.zc-empty-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+
+.zc-empty p {
+    font-size: 18px;
+    color: #93959f;
+    margin-bottom: 24px;
+}
+
+.zc-browse-btn {
+    display: inline-block;
+    padding: 12px 32px;
+    background: #e23744;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.zc-browse-btn:hover {
+    background: #c72e3c;
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .zomato-cart {
+        padding: 16px 12px 110px;
+    }
+
+    .zc-header h2 {
+        font-size: 20px;
+    }
+
+    .zc-item-img {
+        width: 54px;
+        height: 54px;
+        border-radius: 10px;
+    }
+
+    .zc-item-name {
+        font-size: 14px;
+    }
+
+    .zc-item-price {
+        font-size: 12px;
+    }
+
+    .zc-qty-stepper button {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+
+    .zc-qty-count {
+        width: 28px;
+        font-size: 13px;
+        line-height: 30px;
+    }
+
+    .zc-checkout-btn {
+        font-size: 15px;
+        padding: 14px;
+    }
+}
