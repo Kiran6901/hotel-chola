@@ -29,9 +29,26 @@
 
     <div class="explore-menu-list-item">
       <a href="/collections/{{ cat_handle }}" style="text-decoration: none; color: inherit;">
-        <div class="category-filter-circle {% if is_active %}active{% endif %}">
-          <i class="fa-solid fa-{{ category_icons[forloop.index0] }}"></i>
-        </div>
+        {%- assign cat_collection = collections[cat_handle] -%}
+        {%- if cat_collection.image != blank -%}
+          <img
+            src="{{ cat_collection.image | image_url: width: 200 }}"
+            alt="{{ cat | escape }}"
+            loading="lazy"
+            class="{% if is_active %}active{% endif %}"
+          >
+        {%- elsif cat_collection.products.first.featured_image != blank -%}
+          <img
+            src="{{ cat_collection.products.first.featured_image | image_url: width: 200 }}"
+            alt="{{ cat | escape }}"
+            loading="lazy"
+            class="{% if is_active %}active{% endif %}"
+          >
+        {%- else -%}
+          <div class="category-filter-circle {% if is_active %}active{% endif %}">
+            <i class="fa-solid fa-{{ category_icons[forloop.index0] }}"></i>
+          </div>
+        {%- endif -%}
         <p>{{ cat }}</p>
       </a>
     </div>
