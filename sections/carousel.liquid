@@ -1,6 +1,6 @@
 {%- comment -%}
   IMAGE CAROUSEL SECTION
-  Auto-rotating promotional image slider using schema blocks
+  Auto-rotating promotional image slider
 {%- endcomment -%}
 
 {%- if section.blocks.size > 0 -%}
@@ -31,11 +31,15 @@
       {%- endfor -%}
     </div>
   </div>
+{%- else -%}
+  <div class="carousel-container" id="app-download" style="text-align: center; padding: 40px 20px;">
+    <p style="color: #999;">Add promotional images in the Theme Editor to display a carousel here.</p>
+  </div>
 {%- endif -%}
 
 {% schema %}
 {
-  "name": "Image Carousel",
+  "name": "Carousel",
   "settings": [
     {
       "type": "range",
@@ -45,8 +49,7 @@
       "max": 10000,
       "step": 500,
       "default": 3000,
-      "unit": "ms",
-      "info": "Time between slide transitions"
+      "unit": "ms"
     }
   ],
   "blocks": [
@@ -57,8 +60,7 @@
         {
           "type": "image_picker",
           "id": "slide_image",
-          "label": "Slide Image",
-          "info": "Recommended size: 1200x425px"
+          "label": "Slide Image"
         },
         {
           "type": "text",
@@ -74,16 +76,6 @@
       ]
     }
   ],
-  "max_blocks": 10,
-  "presets": [
-    {
-      "name": "Image Carousel",
-      "blocks": [
-        { "type": "slide" },
-        { "type": "slide" },
-        { "type": "slide" }
-      ]
-    }
-  ]
+  "max_blocks": 10
 }
 {% endschema %}
