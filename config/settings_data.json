@@ -59,6 +59,51 @@
       "menu-categories": {
         "type": "menu-categories",
         "blocks": {
+          "category_aBTeyq": {
+            "type": "category",
+            "name": "Tandoori",
+            "settings": {
+              "category_name": "Tandoori",
+              "category_image": "shopify://shop_images/Image1_-Tandoori-Chicken-1024x538_743c2e0e-cd56-42b2-865f-e2bcb5807394.jpg",
+              "category_link": "shopify://collections/tandoori"
+            }
+          },
+          "category_tJwpXW": {
+            "type": "category",
+            "name": "Biriyani",
+            "settings": {
+              "category_name": "Biriyani",
+              "category_image": "shopify://shop_images/Ambur-Chicken-Biriyani.jpg",
+              "category_link": "shopify://collections/biryani"
+            }
+          },
+          "category_XWmQnA": {
+            "type": "category",
+            "name": "Veg. Gravies",
+            "settings": {
+              "category_name": "Veg. Gravies",
+              "category_image": "shopify://shop_images/106398434.avif",
+              "category_link": "shopify://collections/veg-gravies"
+            }
+          },
+          "category_6pUqyr": {
+            "type": "category",
+            "name": "Non-Veg Gravies",
+            "settings": {
+              "category_name": "Non-Veg Gravies",
+              "category_image": "shopify://shop_images/image-445631-1671810387.png",
+              "category_link": "shopify://collections/non-veg-gravies"
+            }
+          },
+          "category_QjfMPh": {
+            "type": "category",
+            "name": "Naan & Roti",
+            "settings": {
+              "category_name": "Naan & Roti",
+              "category_image": "shopify://shop_images/naan-1.jpg",
+              "category_link": "shopify://collections/naan-roti"
+            }
+          },
           "category_rCC4YB": {
             "type": "category",
             "name": "Desserts",
@@ -95,33 +140,6 @@
               "category_link": "shopify://collections/snacks-starters"
             }
           },
-          "category_6pUqyr": {
-            "type": "category",
-            "name": "Non-Veg Gravies",
-            "settings": {
-              "category_name": "Non-Veg Gravies",
-              "category_image": "shopify://shop_images/image-445631-1671810387.png",
-              "category_link": "shopify://collections/non-veg-gravies"
-            }
-          },
-          "category_XWmQnA": {
-            "type": "category",
-            "name": "Veg. Gravies",
-            "settings": {
-              "category_name": "Veg. Gravies",
-              "category_image": "shopify://shop_images/106398434.avif",
-              "category_link": "shopify://collections/veg-gravies"
-            }
-          },
-          "category_tJwpXW": {
-            "type": "category",
-            "name": "Biriyani",
-            "settings": {
-              "category_name": "Biriyani",
-              "category_image": "shopify://shop_images/Ambur-Chicken-Biriyani.jpg",
-              "category_link": "shopify://collections/biryani"
-            }
-          },
           "category_9xXJqQ": {
             "type": "category",
             "name": "Rice & Noodles",
@@ -130,37 +148,19 @@
               "category_image": "shopify://shop_images/noodles2_2000_1125.avif",
               "category_link": "shopify://collections/rice-noodles"
             }
-          },
-          "category_QjfMPh": {
-            "type": "category",
-            "name": "Naan & Roti",
-            "settings": {
-              "category_name": "Naan & Roti",
-              "category_image": "shopify://shop_images/naan-1.jpg",
-              "category_link": "shopify://collections/naan-roti"
-            }
-          },
-          "category_aBTeyq": {
-            "type": "category",
-            "name": "Tandoori",
-            "settings": {
-              "category_name": "Tandoori",
-              "category_image": "shopify://shop_images/Image1_-Tandoori-Chicken-1024x538_743c2e0e-cd56-42b2-865f-e2bcb5807394.jpg",
-              "category_link": "shopify://collections/tandoori"
-            }
           }
         },
         "block_order": [
+          "category_aBTeyq",
+          "category_tJwpXW",
+          "category_XWmQnA",
+          "category_6pUqyr",
+          "category_QjfMPh",
           "category_rCC4YB",
           "category_r8Lzpx",
           "category_qpbNFT",
           "category_7thfCF",
-          "category_6pUqyr",
-          "category_XWmQnA",
-          "category_tJwpXW",
-          "category_9xXJqQ",
-          "category_QjfMPh",
-          "category_aBTeyq"
+          "category_9xXJqQ"
         ],
         "settings": {
           "title": "Explore our menu",
