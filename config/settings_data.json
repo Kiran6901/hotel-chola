@@ -65,7 +65,7 @@
             "settings": {
               "category_name": "Desserts",
               "category_image": "shopify://shop_images/3-ingredient-dessert-recipes.webp",
-              "category_link": ""
+              "category_link": "shopify://collections/desserts"
             }
           },
           "category_r8Lzpx": {
@@ -74,7 +74,7 @@
             "settings": {
               "category_name": "Fresh Juice",
               "category_image": "shopify://shop_images/juicing-health-fresh-juice-good.webp",
-              "category_link": ""
+              "category_link": "shopify://collections/fresh-juice"
             }
           },
           "category_qpbNFT": {
@@ -83,7 +83,7 @@
             "settings": {
               "category_name": "Sea Food",
               "category_image": "shopify://shop_images/shutterstock_1773695441-min-750x750.jpg",
-              "category_link": ""
+              "category_link": "shopify://collections/seafood"
             }
           },
           "category_7thfCF": {
@@ -92,7 +92,7 @@
             "settings": {
               "category_name": "Snacks & Starters",
               "category_image": "shopify://shop_images/IcC9fTgdOC.jpg",
-              "category_link": ""
+              "category_link": "shopify://collections/snacks-starters"
             }
           },
           "category_6pUqyr": {
@@ -101,7 +101,7 @@
             "settings": {
               "category_name": "Non-Veg Gravies",
               "category_image": "shopify://shop_images/image-445631-1671810387.png",
-              "category_link": ""
+              "category_link": "shopify://collections/non-veg-gravies"
             }
           },
           "category_XWmQnA": {
@@ -110,7 +110,7 @@
             "settings": {
               "category_name": "Veg. Gravies",
               "category_image": "shopify://shop_images/106398434.avif",
-              "category_link": ""
+              "category_link": "shopify://collections/veg-gravies"
             }
           },
           "category_tJwpXW": {
@@ -119,7 +119,7 @@
             "settings": {
               "category_name": "Biriyani",
               "category_image": "shopify://shop_images/Ambur-Chicken-Biriyani.jpg",
-              "category_link": ""
+              "category_link": "shopify://collections/biryani"
             }
           },
           "category_9xXJqQ": {
@@ -128,7 +128,7 @@
             "settings": {
               "category_name": "Rice & Noodles",
               "category_image": "shopify://shop_images/noodles2_2000_1125.avif",
-              "category_link": ""
+              "category_link": "shopify://collections/rice-noodles"
             }
           },
           "category_QjfMPh": {
@@ -137,7 +137,7 @@
             "settings": {
               "category_name": "Naan & Roti",
               "category_image": "shopify://shop_images/naan-1.jpg",
-              "category_link": ""
+              "category_link": "shopify://collections/naan-roti"
             }
           },
           "category_aBTeyq": {
