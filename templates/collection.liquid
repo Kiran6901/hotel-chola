@@ -45,27 +45,26 @@
   <hr style="margin: 10px 0; height: 2px; background-color: #E2E2E2; border: none;">
 {%- endif -%}
 
-{%- comment -%} Product Grid {%- endcomment -%}
-{%- if collection.products.size > 0 -%}
-  <div class="collection-grid">
-    {%- for product in collection.products -%}
-      {% render 'product-card', product: product %}
-    {%- endfor -%}
-  </div>
+{%- comment -%} Product Grid with Pagination {%- endcomment -%}
+{% paginate collection.products by 12 %}
+  {%- if collection.products.size > 0 -%}
+    <div class="collection-grid">
+      {%- for product in collection.products -%}
+        {% render 'product-card', product: product %}
+      {%- endfor -%}
+    </div>
 
-  {%- comment -%} Pagination {%- endcomment -%}
-  {%- if paginate.pages > 1 -%}
-    {% paginate collection.products by 12 %}
+    {%- if paginate.pages > 1 -%}
       <div style="text-align: center; margin: 40px 0;">
         {{ paginate | default_pagination }}
       </div>
-    {% endpaginate %}
+    {%- endif -%}
+  {%- else -%}
+    <div class="no-items-message">
+      <p>No products found in this collection.</p>
+      <a href="/collections/all" class="view-all-button" style="display: inline-block; margin-top: 20px;">
+        Browse All Products
+      </a>
+    </div>
   {%- endif -%}
-{%- else -%}
-  <div class="no-items-message">
-    <p>No products found in this collection.</p>
-    <a href="/collections/all" class="view-all-button" style="display: inline-block; margin-top: 20px;">
-      Browse All Products
-    </a>
-  </div>
-{%- endif -%}
+{% endpaginate %}

@@ -7,13 +7,13 @@
 <div class="floating-cart-container {% if cart.item_count == 0 %}is-hidden{% endif %}">
   <a href="/cart" class="floating-cart">
     <div class="floating-cart-left">
-      <p class="floating-cart-items">{{ cart.item_count }} ITEM{{ cart.item_count | plural: '', 'S' }}</p>
+      <p class="floating-cart-items">{{ cart.item_count }} ITEM{% if cart.item_count != 1 %}S{% endif %}</p>
       <span class="divider">|</span>
       <p class="floating-cart-total">{{ cart.total_price | money }}</p>
     </div>
     <div class="floating-cart-right">
       <p>View Cart</p>
-      <i class="arrow-icon">→</i>
+      <i class="arrow-icon">&rarr;</i>
     </div>
   </a>
 </div>
