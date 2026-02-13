@@ -741,6 +741,37 @@ img {
     }
 }
 
+@media (max-width: 768px) {
+    .explore-menu-list {
+        gap: 12px;
+        margin: 10px 0;
+        padding: 8px 0;
+    }
+
+    .explore-menu-list-item {
+        width: 72px;
+    }
+
+    .explore-menu-list-item img {
+        width: 65px;
+        height: 65px;
+    }
+
+    .explore-menu-list-item p {
+        font-size: 12px;
+        margin-top: 6px;
+    }
+
+    .category-filter-circle {
+        width: 55px;
+        height: 55px;
+    }
+
+    .category-filter-circle i {
+        font-size: 16px;
+    }
+}
+
 /* ============================================
    CATEGORY FILTER CIRCLES (Collection Page)
    ============================================ */
