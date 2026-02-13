@@ -13,49 +13,42 @@
   {%- endif -%}
 
   <div class="explore-menu-list">
-    {%- for block in section.blocks -%}
-      <div class="explore-menu-list-item" {{ block.shopify_attributes }}>
-        {%- if block.settings.category_link != blank -%}
-          <a href="{{ block.settings.category_link }}">
-        {%- endif -%}
-
-          {%- if block.settings.category_image != blank -%}
-            <img
-              src="{{ block.settings.category_image | image_url: width: 200 }}"
-              alt="{{ block.settings.category_name | escape }}"
-              loading="lazy"
-            >
-          {%- else -%}
-            <div style="width: 80px; height: 80px; border-radius: 50%; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
-              <i class="fa-solid fa-utensils" style="font-size: 24px; color: #999;"></i>
-            </div>
+    {%- if section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
+        <div class="explore-menu-list-item" {{ block.shopify_attributes }}>
+          {%- if block.settings.category_link != blank -%}
+            <a href="{{ block.settings.category_link }}" style="text-decoration: none; color: inherit;">
           {%- endif -%}
-          <p>{{ block.settings.category_name }}</p>
 
-        {%- if block.settings.category_link != blank -%}
-          </a>
-        {%- endif -%}
-      </div>
-    {%- endfor -%}
-
-    {%- comment -%} Fallback: If no blocks, show collections {%- endcomment -%}
-    {%- if section.blocks.size == 0 -%}
-      {%- for collection in collections limit: 8 -%}
-        <div class="explore-menu-list-item">
-          <a href="{{ collection.url }}">
-            {%- if collection.image != blank -%}
+            {%- if block.settings.category_image != blank -%}
               <img
-                src="{{ collection.image | image_url: width: 200 }}"
-                alt="{{ collection.title | escape }}"
+                src="{{ block.settings.category_image | image_url: width: 200 }}"
+                alt="{{ block.settings.category_name | escape }}"
                 loading="lazy"
-                style="border-radius: 50%; width: 80px; height: 80px; object-fit: cover;"
               >
             {%- else -%}
-              <div style="width: 80px; height: 80px; border-radius: 50%; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
-                <i class="fa-solid fa-utensils" style="font-size: 24px; color: #999;"></i>
+              <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #FF4C24, #ff7e5f); display: flex; align-items: center; justify-content: center;">
+                <i class="fa-solid fa-utensils" style="font-size: 24px; color: #fff;"></i>
               </div>
             {%- endif -%}
-            <p>{{ collection.title }}</p>
+            <p>{{ block.settings.category_name }}</p>
+
+          {%- if block.settings.category_link != blank -%}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    {%- else -%}
+      {%- comment -%} Default 10 categories when no blocks are configured {%- endcomment -%}
+      {%- assign default_categories = "Tandoori,Naan & Roti,Rice & Noodles,Biryani,Fresh Juice,Desserts,Snacks & Starters,Veg. Gravies,Non-Veg Gravies,Sea Food" | split: "," -%}
+      {%- assign category_icons = "fire,bread-slice,bowl-rice,plate-wheat,glass-water,ice-cream,cookie-bite,leaf,drumstick-bite,fish" | split: "," -%}
+      {%- for cat in default_categories -%}
+        <div class="explore-menu-list-item">
+          <a href="/collections/{{ cat | handle }}" style="text-decoration: none; color: inherit;">
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #FF4C24, #ff7e5f); display: flex; align-items: center; justify-content: center;">
+              <i class="fa-solid fa-{{ category_icons[forloop.index0] }}" style="font-size: 24px; color: #fff;"></i>
+            </div>
+            <p>{{ cat }}</p>
           </a>
         </div>
       {%- endfor -%}
@@ -113,21 +106,6 @@
       ]
     }
   ],
-  "max_blocks": 12,
-  "presets": [
-    {
-      "name": "Menu Categories",
-      "blocks": [
-        { "type": "category", "settings": { "category_name": "Salad" } },
-        { "type": "category", "settings": { "category_name": "Rolls" } },
-        { "type": "category", "settings": { "category_name": "Deserts" } },
-        { "type": "category", "settings": { "category_name": "Sandwich" } },
-        { "type": "category", "settings": { "category_name": "Cake" } },
-        { "type": "category", "settings": { "category_name": "Pure Veg" } },
-        { "type": "category", "settings": { "category_name": "Pasta" } },
-        { "type": "category", "settings": { "category_name": "Noodles" } }
-      ]
-    }
-  ]
+  "max_blocks": 15
 }
 {% endschema %}
