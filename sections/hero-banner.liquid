@@ -29,7 +29,7 @@
     </div>
 
     {%- if section.settings.cta_text != blank -%}
-      <a href="{{ section.settings.cta_link | default: '#explore-menu' }}" class="btn">
+      <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="btn">
         {{ section.settings.cta_text }}
       </a>
     {%- endif -%}
