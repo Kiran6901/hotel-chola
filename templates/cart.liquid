@@ -55,13 +55,21 @@
     </div>
 
     {%- comment -%} Promo / Discount Code {%- endcomment -%}
-    <div class="zc-promo">
+    <div class="zc-promo" id="zc-promo-section">
       <p class="zc-promo-title">🏷️ Apply Coupon</p>
-      <div class="zc-promo-row">
-        <input type="text" placeholder="Enter coupon code" class="zc-promo-input">
-        <button class="zc-promo-btn" type="button">Apply</button>
+
+      {%- comment -%} Default: input + apply button {%- endcomment -%}
+      <div class="zc-promo-row" id="zc-promo-input-row">
+        <input type="text" placeholder="Enter coupon code" class="zc-promo-input" id="zc-promo-input">
+        <button class="zc-promo-btn" type="button" id="zc-promo-apply">Apply</button>
       </div>
-      <p class="zc-promo-note">Note: Discount codes will be applied at checkout.</p>
+      <p class="zc-promo-error" id="zc-promo-error" style="display:none;"></p>
+
+      {%- comment -%} Applied state (hidden by default) {%- endcomment -%}
+      <div class="zc-promo-applied" id="zc-promo-applied" style="display:none;">
+        <p class="zc-promo-applied-label">✓ <span id="zc-promo-code-display">GLIM</span> applied</p>
+        <button class="zc-promo-remove" id="zc-promo-remove" type="button">Remove</button>
+      </div>
     </div>
 
     {%- comment -%} Bill Details {%- endcomment -%}
@@ -71,14 +79,24 @@
         <span>Item Total</span>
         <span>{{ cart.total_price | money }}</span>
       </div>
-      <div class="zc-bill-row">
+      <div class="zc-bill-row" id="zc-delivery-row">
         <span>Delivery Fee</span>
-        <span>Calculated at checkout</span>
+        <span id="zc-delivery-value">₹40</span>
+      </div>
+      {%- comment -%} Discount row (hidden until promo applied) {%- endcomment -%}
+      <div class="zc-bill-row zc-discount-row" id="zc-discount-row" style="display:none;">
+        <span>Discount (Free Delivery)</span>
+        <span>−₹40</span>
       </div>
       <div class="zc-bill-row zc-bill-total">
         <span>To Pay</span>
-        <span>{{ cart.total_price | money }}</span>
+        <span id="zc-total-value">{{ cart.total_price | money_without_trailing_zeros }}</span>
       </div>
+    </div>
+
+    {%- comment -%} Savings badge (hidden until promo applied) {%- endcomment -%}
+    <div class="zc-savings-badge" id="zc-savings-badge" style="display:none;">
+      🎉 You saved ₹40 on this order!
     </div>
 
     {%- comment -%} Checkout {%- endcomment -%}
@@ -99,3 +117,75 @@
 
   {%- endif -%}
 </div>
+
+{%- comment -%} GLIM Promo Code Logic {%- endcomment -%}
+<script>
+(function() {
+  var applyBtn = document.getElementById('zc-promo-apply');
+  var removeBtn = document.getElementById('zc-promo-remove');
+  var inputRow = document.getElementById('zc-promo-input-row');
+  var appliedRow = document.getElementById('zc-promo-applied');
+  var promoInput = document.getElementById('zc-promo-input');
+  var promoError = document.getElementById('zc-promo-error');
+  var codeDisplay = document.getElementById('zc-promo-code-display');
+  var deliveryValue = document.getElementById('zc-delivery-value');
+  var discountRow = document.getElementById('zc-discount-row');
+  var savingsBadge = document.getElementById('zc-savings-badge');
+  var totalValue = document.getElementById('zc-total-value');
+
+  if (!applyBtn) return;
+
+  var cartTotal = {{ cart.total_price }} / 100;
+  var DELIVERY_FEE = 40;
+
+  function applyPromo() {
+    var code = promoInput.value.trim().toUpperCase();
+    if (!code) {
+      promoError.textContent = 'Please enter a coupon code';
+      promoError.style.display = 'block';
+      return;
+    }
+    if (code !== 'GLIM') {
+      promoError.textContent = 'Invalid coupon code';
+      promoError.style.display = 'block';
+      return;
+    }
+    // Apply
+    promoError.style.display = 'none';
+    inputRow.style.display = 'none';
+    appliedRow.style.display = 'flex';
+    codeDisplay.textContent = code;
+    deliveryValue.innerHTML = '<span class="zc-strike">₹' + DELIVERY_FEE + '</span> <span class="zc-free">FREE</span>';
+    discountRow.style.display = 'flex';
+    savingsBadge.style.display = 'block';
+    totalValue.textContent = '₹' + cartTotal;
+  }
+
+  function removePromo() {
+    inputRow.style.display = 'flex';
+    appliedRow.style.display = 'none';
+    promoInput.value = '';
+    promoError.style.display = 'none';
+    deliveryValue.innerHTML = '₹' + DELIVERY_FEE;
+    discountRow.style.display = 'none';
+    savingsBadge.style.display = 'none';
+    totalValue.textContent = '₹' + (cartTotal + DELIVERY_FEE);
+  }
+
+  applyBtn.addEventListener('click', applyPromo);
+  if (removeBtn) removeBtn.addEventListener('click', removePromo);
+  if (promoInput) {
+    promoInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') applyPromo();
+    });
+    promoInput.addEventListener('input', function() {
+      promoError.style.display = 'none';
+    });
+  }
+
+  // Set initial total with delivery
+  if (totalValue && cartTotal > 0) {
+    totalValue.textContent = '₹' + (cartTotal + DELIVERY_FEE);
+  }
+})();
+</script>

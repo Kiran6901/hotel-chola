@@ -2015,3 +2015,86 @@ img {
         padding: 14px;
     }
 }
+
+/* --- Promo Applied State --- */
+.zc-promo-applied {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: #e8f5e1;
+    border: 1px solid #c6e6b5;
+    border-radius: 8px;
+}
+
+.zc-promo-applied-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d7a0f;
+    margin: 0;
+}
+
+.zc-promo-remove {
+    background: none;
+    border: none;
+    color: #e23744;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    font-family: inherit;
+}
+
+/* Promo Error */
+.zc-promo-error {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #e23744;
+    font-weight: 500;
+}
+
+/* Discount Row */
+.zc-discount-row span {
+    color: #60b246;
+    font-weight: 500;
+}
+
+/* Strikethrough + FREE label */
+.zc-strike {
+    text-decoration: line-through;
+    color: #b3b3b3;
+    margin-right: 6px;
+}
+
+.zc-free {
+    color: #60b246;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+/* Savings Badge */
+.zc-savings-badge {
+    margin-top: 12px;
+    padding: 12px 14px;
+    background: linear-gradient(135deg, #60b246 0%, #82c91e 100%);
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(96, 178, 70, 0.25);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes zcSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
