@@ -1,30 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "current": {
-        "color_primary": "#FF4C24",
-        "color_secondary": "#49557E",
-        "color_text": "#333333",
-        "color_background": "#ffffff",
-        "color_footer_bg": "#323232",
-        "color_footer_text": "#D9D9D9",
-        "logo_width": 150,
-        "currency_symbol": "₹",
-        "delivery_charge": "40",
-        "social_facebook": "https://www.facebook.com/hotelchola",
-        "social_twitter": "https://www.twitter.com/hotelchola",
-        "social_instagram": "https://www.instagram.com/hotelchola",
-        "social_linkedin": "https://www.linkedin.com/company/hotelchola",
-        "sections": {
-            "header": {
-                "type": "header",
-                "settings": {}
-            },
-            "footer": {
-                "type": "footer",
-                "settings": {
-                    "footer_description": "Hotel Chola is your go-to destination for authentic, delicious food experiences delivered straight to your doorstep. We offer a wide variety of mouthwatering meals crafted with the finest ingredients."
-                }
+  "current": {
+    "color_primary": "#FF4C24",
+    "color_secondary": "#49557E",
+    "color_text": "#333333",
+    "color_background": "#ffffff",
+    "color_footer_bg": "#323232",
+    "color_footer_text": "#D9D9D9",
+    "logo_width": 150,
+    "currency_symbol": "₹",
+    "delivery_charge": "40",
+    "social_facebook": "https://www.facebook.com/hotelchola",
+    "social_twitter": "https://www.twitter.com/hotelchola",
+    "social_instagram": "https://www.instagram.com/hotelchola",
+    "social_linkedin": "https://www.linkedin.com/company/hotelchola",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu",
+          "bg_color": "#ffffff",
+          "text_color": "#49557e"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_description": "Hotel Chola is your go-to destination for authentic, delicious food experiences delivered straight to your doorstep. We offer a wide variety of mouthwatering meals crafted with the finest ingredients.",
+          "column2_title": "COMPANY",
+          "footer_menu": "footer",
+          "column3_title": "GET IN TOUCH",
+          "contact_phone": "9566806999",
+          "contact_email": "contact@hotelchola.com",
+          "contact_address": "Hotel Chola, near GLIM, East Coast Road, Tamil Nadu - 603102",
+          "bg_color": "#323232",
+          "text_color": "#d9d9d9"
+        }
+      },
+      "hero-banner": {
+        "type": "hero-banner",
+        "settings": {
+          "heading": "DISCOVER THE BEST FOOD & DRINKS IN CHENNAI",
+          "phone": "9566806999",
+          "website": "www.hotelchola.com",
+          "cta_text": "View Menu",
+          "cta_link": "",
+          "overlay_color": "#ffffff"
+        }
+      },
+      "menu-categories": {
+        "type": "menu-categories",
+        "blocks": {
+          "category_rCC4YB": {
+            "type": "category",
+            "name": "Desserts",
+            "settings": {
+              "category_name": "Desserts",
+              "category_image": "shopify://shop_images/3-ingredient-dessert-recipes.webp",
+              "category_link": ""
             }
+          },
+          "category_r8Lzpx": {
+            "type": "category",
+            "name": "Fresh Juice",
+            "settings": {
+              "category_name": "Fresh Juice",
+              "category_image": "shopify://shop_images/juicing-health-fresh-juice-good.webp",
+              "category_link": ""
+            }
+          },
+          "category_qpbNFT": {
+            "type": "category",
+            "name": "Sea Food",
+            "settings": {
+              "category_name": "Sea Food",
+              "category_image": "shopify://shop_images/shutterstock_1773695441-min-750x750.jpg",
+              "category_link": ""
+            }
+          },
+          "category_7thfCF": {
+            "type": "category",
+            "name": "Snacks & Starters",
+            "settings": {
+              "category_name": "Snacks & Starters",
+              "category_image": "shopify://shop_images/IcC9fTgdOC.jpg",
+              "category_link": ""
+            }
+          },
+          "category_6pUqyr": {
+            "type": "category",
+            "name": "Non-Veg Gravies",
+            "settings": {
+              "category_name": "Non-Veg Gravies",
+              "category_image": "shopify://shop_images/image-445631-1671810387.png",
+              "category_link": ""
+            }
+          },
+          "category_XWmQnA": {
+            "type": "category",
+            "name": "Veg. Gravies",
+            "settings": {
+              "category_name": "Veg. Gravies",
+              "category_image": "shopify://shop_images/106398434.avif",
+              "category_link": ""
+            }
+          },
+          "category_tJwpXW": {
+            "type": "category",
+            "name": "Biriyani",
+            "settings": {
+              "category_name": "Biriyani",
+              "category_image": "shopify://shop_images/Ambur-Chicken-Biriyani.jpg",
+              "category_link": ""
+            }
+          },
+          "category_9xXJqQ": {
+            "type": "category",
+            "name": "Rice & Noodles",
+            "settings": {
+              "category_name": "Rice & Noodles",
+              "category_image": "shopify://shop_images/noodles2_2000_1125.avif",
+              "category_link": ""
+            }
+          },
+          "category_QjfMPh": {
+            "type": "category",
+            "name": "Naan & Roti",
+            "settings": {
+              "category_name": "Naan & Roti",
+              "category_image": "shopify://shop_images/naan-1.jpg",
+              "category_link": ""
+            }
+          },
+          "category_aBTeyq": {
+            "type": "category",
+            "name": "Tandoori",
+            "settings": {
+              "category_name": "Tandoori",
+              "category_image": "shopify://shop_images/Image1_-Tandoori-Chicken-1024x538_743c2e0e-cd56-42b2-865f-e2bcb5807394.jpg",
+              "category_link": ""
+            }
+          }
         },
-        "content_for_index": []
-    }
+        "block_order": [
+          "category_rCC4YB",
+          "category_r8Lzpx",
+          "category_qpbNFT",
+          "category_7thfCF",
+          "category_6pUqyr",
+          "category_XWmQnA",
+          "category_tJwpXW",
+          "category_9xXJqQ",
+          "category_QjfMPh",
+          "category_aBTeyq"
+        ],
+        "settings": {
+          "title": "Explore our menu",
+          "description": "Check out our menu and find something you'll love! We have a mix of dishes, from your everyday favorites to special treats, all made fresh and tasty.",
+          "bg_color": "#ffffff"
+        }
+      },
+      "featured-products": {
+        "type": "featured-products",
+        "settings": {
+          "title": "Top dishes near you",
+          "collection": "",
+          "products_count": 6,
+          "view_all_text": "View All",
+          "bg_color": "#ffffff"
+        }
+      }
+    },
+    "content_for_index": []
+  }
 }
