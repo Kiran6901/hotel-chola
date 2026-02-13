@@ -146,7 +146,7 @@
             "settings": {
               "category_name": "Tandoori",
               "category_image": "shopify://shop_images/Image1_-Tandoori-Chicken-1024x538_743c2e0e-cd56-42b2-865f-e2bcb5807394.jpg",
-              "category_link": ""
+              "category_link": "shopify://collections/tandoori"
             }
           }
         },
