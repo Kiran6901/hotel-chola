@@ -71,6 +71,7 @@
           "category_tJwpXW": {
             "type": "category",
             "name": "Biriyani",
+            "disabled": true,
             "settings": {
               "category_name": "Biriyani",
               "category_image": "shopify://shop_images/Ambur-Chicken-Biriyani.jpg",
@@ -107,6 +108,7 @@
           "category_rCC4YB": {
             "type": "category",
             "name": "Desserts",
+            "disabled": true,
             "settings": {
               "category_name": "Desserts",
               "category_image": "shopify://shop_images/3-ingredient-dessert-recipes.webp",
@@ -116,6 +118,7 @@
           "category_r8Lzpx": {
             "type": "category",
             "name": "Fresh Juice",
+            "disabled": true,
             "settings": {
               "category_name": "Fresh Juice",
               "category_image": "shopify://shop_images/juicing-health-fresh-juice-good.webp",
